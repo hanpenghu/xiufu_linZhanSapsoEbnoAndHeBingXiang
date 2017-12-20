@@ -1,0 +1,67 @@
+//package com.ipace.linzhan.xiufu.xiuFu;
+//import com.ipace.linzhan.xiufu.xiuFu.service.A;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.scheduling.annotation.Scheduled;
+//import org.springframework.web.bind.annotation.*;
+//
+//import java.io.File;
+//import java.math.BigDecimal;
+//import java.util.*;
+//
+//@CrossOrigin
+//@RestController
+//public class XiuFu {
+//    @Autowired
+//    private A a;
+//    @Autowired
+//    private SapsoMapper sapsoMapper;
+//
+//    public final static long thirty_Second =  30 * 1000;
+//    public final static long two_Second =  30*60*60*1000;
+//    @RequestMapping(value="xiu",method= RequestMethod.GET)
+//    public  String xiu(){
+////        h();
+//        return "~~~~~~~~~~~~~~~~~~~~~~~~试验成功~~~~~~~~~~~~~~~~~~~~~~~~";
+//    }
+//    ////////
+//    @RequestMapping(value="xiufu",method= RequestMethod.GET)
+//    public  String xiufu(){
+//        h();
+//        return "~~~~~~~~~~~~~~~~~~~~~~~~修复完成~~~~~~~~~~~~~~~~~~~~~~~~";
+//    }
+//    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+//@Scheduled(fixedDelay=two_Second)
+//public void h(){
+////    SapsoExample sapsoExample =new SapsoExample();
+////    sapsoExample.createCriteria().andCaigounoIsNotNull();
+////    long l = sapsoMapper.countByExample(sapsoExample);
+////    System.out.println(l);
+//    Integer ii=sapsoMapper.updateOsNoAndPrdNoAndChengFenDaiMaNullToSpace();
+//    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~更新"+ii+"条数据of~sapso的单号货号成分代码~~~~~~~~~~~~~~~~~~~~~~~");
+//    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~修复开始~~~~~~~~~~~~~~~~~~~~~~~~");
+//    String filepath = "C:\\1";//D盘下的file文件夹的目录
+//    File file = new File(filepath);//File类型可以是文件也可以是文件夹
+//    File[] fileList = file.listFiles();//将该目录下的所有文件放置在一个File类型的数组中
+//    for(int i=0;i<fileList.length;i++){
+//        String absolutePath = fileList[i].getAbsolutePath();
+//        List<List<String>> list=ReadExcel001UseJxl.getRows(fileList[i].getAbsolutePath(),
+//                0,1,0);
+//        a.g(list);
+//    }
+//    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~修复完成~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//}

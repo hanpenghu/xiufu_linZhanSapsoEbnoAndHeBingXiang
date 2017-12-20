@@ -1,0 +1,102 @@
+//package com.ipace.linzhan.xiufu.xiuFu.service;
+//
+//import com.ipace.linzhan.xiufu.xiuFu.Sapso;
+//import com.ipace.linzhan.xiufu.xiuFu.SapsoExample;
+//import com.ipace.linzhan.xiufu.xiuFu.SapsoMapper;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//import org.springframework.transaction.annotation.Transactional;
+//
+//import java.math.BigDecimal;
+//import java.util.ArrayList;
+//import java.util.Iterator;
+//import java.util.List;
+//@Service("a")
+//public class A {
+//    @Autowired
+//    private SapsoMapper sapsoMapper;
+//    ////////////////////////////////////////////////////////////////////////////////////
+//   @Transactional
+//    public void g(List<List<String>> list){
+//        //装行,list22完全复制list
+//        List<List<String>> list22=new ArrayList<>();
+//        for(List<String> list33:list){
+//            //装单元格
+//            List<String>list44=new ArrayList<>();
+//            for(String str:list33){
+//                list44.add(str);
+//            }
+//            list22.add(list44);
+//        }
+////////////////////////////////////////////////////////////////////////////////////
+//        List<List<List<String>>> listNB=new ArrayList<>();
+//        for(List<String> list99:list){
+//            List<List<String>>list88=new ArrayList<>();
+//            Iterator<List<String>> iterator = list22.iterator();
+//            while(iterator.hasNext()){
+//                List<String> list999 = iterator.next();
+//                if((list99.get(5).trim()+list99.get(10).trim()+list99.get(13)).equals(list999.get(5).trim()+list999.get(10).trim()+list999.get(13))){
+//                    list88.add(list999);
+//                    iterator.remove();
+//                }
+//            }
+//            if(list88.size()>0){//空罐子不要
+//                listNB.add(list88);
+//            }
+//
+//        }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+////ListNB中装的都是  单号+货号+成分代码相同的在excel中的
+//        for(List<List<String>> listlistString:listNB){
+//            //listlistString装了 单号+货号+成分代码相同的在excel
+//            SapsoExample sapsoExample =new SapsoExample();
+//            sapsoExample.createCriteria()
+//                    .andOsnoEqualTo(listlistString.get(0).get(5).trim())
+//                    .andPrdnoEqualTo(listlistString.get(0).get(10).trim())
+//                    .andChengfendaimaEqualTo(listlistString.get(0).get(13).trim());
+//            List<Sapso> sapsos = sapsoMapper.selectByExample(sapsoExample);
+//            System.out.println(sapsos);
+//            if(sapsos!=null&&sapsos.size()>0){
+//                //删除当前的sapso
+//                int i = sapsoMapper.deleteByExample(sapsoExample);
+//                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~实验1~~~~~~~~~~~~~~~~~~~~~~~~");
+//                System.out.println("删掉"+i+"行");
+//                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~实验1~~~~~~~~~~~~~~~~~~~~~~~~");
+//                for(List<String> listString:listlistString){
+//                    Sapso b=new Sapso();
+//                    b.setOsno(listString.get(5));
+//                    b.setPrdno(listString.get(10));
+//                    b.setQty(new BigDecimal(listString.get(17)));
+//                    b.setCaigouno(listString.get(6));
+//                    b.setEbno(listString.get(4));
+//                    b.setMaitouno(listString.get(29));
+//                    b.setSaphh(listString.get(7));
+//                    b.setSapph(listString.get(9));
+//                    b.setSapwlm(listString.get(11));
+//                    b.setLuohao(sapsos.get(0).getLuohao());
+//                    b.setGanghao(sapsos.get(0).getGanghao());
+//                    b.setReallength(listString.get(27));
+//                    b.setRealwidth(listString.get(26));
+//                    //20171108加了成分代码
+//                    b.setChengfendaima(listString.get(13));
+//                    b.setTimesamebatch(sapsos.get(0).getTimesamebatch());
+//                    b.setUuid(sapsos.get(0).getUuid());//uuid相同代表  单号+货号+成分代码  相同
+//                    int insert = sapsoMapper.insert(b);
+//                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~实验2~~~~~~~~~~~~~~~~~~~~~~~~");
+//                    System.out.println("插入"+insert+"行");
+//                    System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~实验2~~~~~~~~~~~~~~~~~~~~~~~~");
+//                }
+//            }else{
+//                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~实验3~~~~~~~~~~~~~~~~~~~~~~~~");
+//                System.out.println("sapso表里没有跟该条数据对应的数据");
+//                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~实验3~~~~~~~~~~~~~~~~~~~~~~~~");
+//            }
+//        }
+//
+//
+////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//    }
+//}

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipace.linzhan.xiufu.xiuFu.SapsoMapper">
+  <resultMap id="BaseResultMap" type="com.ipace.linzhan.xiufu.xiuFu.Sapso">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="timeSameBatch" jdbcType="VARCHAR" property="timesamebatch" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="osNo" jdbcType="VARCHAR" property="osno" />
+    <result column="ebNo" jdbcType="VARCHAR" property="ebno" />
+    <result column="caiGouNo" jdbcType="VARCHAR" property="caigouno" />
+    <result column="prdNo" jdbcType="VARCHAR" property="prdno" />
+    <result column="saphh" jdbcType="VARCHAR" property="saphh" />
+    <result column="sapph" jdbcType="VARCHAR" property="sapph" />
+    <result column="sapwlm" jdbcType="VARCHAR" property="sapwlm" />
+    <result column="qty" jdbcType="NUMERIC" property="qty" />
+    <result column="maiTouNo" jdbcType="VARCHAR" property="maitouno" />
+    <result column="luoHao" jdbcType="VARCHAR" property="luohao" />
+    <result column="gangHao" jdbcType="VARCHAR" property="ganghao" />
+    <result column="realWidth" jdbcType="VARCHAR" property="realwidth" />
+    <result column="realLength" jdbcType="VARCHAR" property="reallength" />
+    <result column="chengFenDaiMa" jdbcType="VARCHAR" property="chengfendaima" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, timeSameBatch, uuid, osNo, ebNo, caiGouNo, prdNo, saphh, sapph, sapwlm, qty,
+    maiTouNo, luoHao, gangHao, realWidth, realLength, chengFenDaiMa
+  </sql>
+  <select id="selectByExample" parameterType="com.ipace.linzhan.xiufu.xiuFu.SapsoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sapso
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sapso
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sapso
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ipace.linzhan.xiufu.xiuFu.SapsoExample">
+    delete from sapso
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ipace.linzhan.xiufu.xiuFu.Sapso">
+    insert into sapso (timeSameBatch, uuid,
+      osNo, ebNo, caiGouNo, 
+      prdNo, saphh, sapph, 
+      sapwlm, qty, maiTouNo, 
+      luoHao, gangHao, realWidth, 
+      realLength, chengFenDaiMa)
+    values ( #{timesamebatch,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR},
+      #{osno,jdbcType=VARCHAR}, #{ebno,jdbcType=VARCHAR}, #{caigouno,jdbcType=VARCHAR}, 
+      #{prdno,jdbcType=VARCHAR}, #{saphh,jdbcType=VARCHAR}, #{sapph,jdbcType=VARCHAR}, 
+      #{sapwlm,jdbcType=VARCHAR}, #{qty,jdbcType=NUMERIC}, #{maitouno,jdbcType=VARCHAR}, 
+      #{luohao,jdbcType=VARCHAR}, #{ganghao,jdbcType=VARCHAR}, #{realwidth,jdbcType=VARCHAR}, 
+      #{reallength,jdbcType=VARCHAR}, #{chengfendaima,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ipace.linzhan.xiufu.xiuFu.Sapso">
+    insert into sapso
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="timesamebatch != null">
+        timeSameBatch,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="osno != null">
+        osNo,
+      </if>
+      <if test="ebno != null">
+        ebNo,
+      </if>
+      <if test="caigouno != null">
+        caiGouNo,
+      </if>
+      <if test="prdno != null">
+        prdNo,
+      </if>
+      <if test="saphh != null">
+        saphh,
+      </if>
+      <if test="sapph != null">
+        sapph,
+      </if>
+      <if test="sapwlm != null">
+        sapwlm,
+      </if>
+      <if test="qty != null">
+        qty,
+      </if>
+      <if test="maitouno != null">
+        maiTouNo,
+      </if>
+      <if test="luohao != null">
+        luoHao,
+      </if>
+      <if test="ganghao != null">
+        gangHao,
+      </if>
+      <if test="realwidth != null">
+        realWidth,
+      </if>
+      <if test="reallength != null">
+        realLength,
+      </if>
+      <if test="chengfendaima != null">
+        chengFenDaiMa,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="timesamebatch != null">
+        #{timesamebatch,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="osno != null">
+        #{osno,jdbcType=VARCHAR},
+      </if>
+      <if test="ebno != null">
+        #{ebno,jdbcType=VARCHAR},
+      </if>
+      <if test="caigouno != null">
+        #{caigouno,jdbcType=VARCHAR},
+      </if>
+      <if test="prdno != null">
+        #{prdno,jdbcType=VARCHAR},
+      </if>
+      <if test="saphh != null">
+        #{saphh,jdbcType=VARCHAR},
+      </if>
+      <if test="sapph != null">
+        #{sapph,jdbcType=VARCHAR},
+      </if>
+      <if test="sapwlm != null">
+        #{sapwlm,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=NUMERIC},
+      </if>
+      <if test="maitouno != null">
+        #{maitouno,jdbcType=VARCHAR},
+      </if>
+      <if test="luohao != null">
+        #{luohao,jdbcType=VARCHAR},
+      </if>
+      <if test="ganghao != null">
+        #{ganghao,jdbcType=VARCHAR},
+      </if>
+      <if test="realwidth != null">
+        #{realwidth,jdbcType=VARCHAR},
+      </if>
+      <if test="reallength != null">
+        #{reallength,jdbcType=VARCHAR},
+      </if>
+      <if test="chengfendaima != null">
+        #{chengfendaima,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ipace.linzhan.xiufu.xiuFu.SapsoExample" resultType="java.lang.Long">
+    select count(*) from sapso
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sapso
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.timesamebatch != null">
+        timeSameBatch = #{record.timesamebatch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uuid != null">
+        uuid = #{record.uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.osno != null">
+        osNo = #{record.osno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebno != null">
+        ebNo = #{record.ebno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caigouno != null">
+        caiGouNo = #{record.caigouno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prdno != null">
+        prdNo = #{record.prdno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saphh != null">
+        saphh = #{record.saphh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sapph != null">
+        sapph = #{record.sapph,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sapwlm != null">
+        sapwlm = #{record.sapwlm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qty != null">
+        qty = #{record.qty,jdbcType=NUMERIC},
+      </if>
+      <if test="record.maitouno != null">
+        maiTouNo = #{record.maitouno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.luohao != null">
+        luoHao = #{record.luohao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ganghao != null">
+        gangHao = #{record.ganghao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realwidth != null">
+        realWidth = #{record.realwidth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reallength != null">
+        realLength = #{record.reallength,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chengfendaima != null">
+        chengFenDaiMa = #{record.chengfendaima,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sapso
+    set id = #{record.id,jdbcType=INTEGER},
+      timeSameBatch = #{record.timesamebatch,jdbcType=VARCHAR},
+      uuid = #{record.uuid,jdbcType=VARCHAR},
+      osNo = #{record.osno,jdbcType=VARCHAR},
+      ebNo = #{record.ebno,jdbcType=VARCHAR},
+      caiGouNo = #{record.caigouno,jdbcType=VARCHAR},
+      prdNo = #{record.prdno,jdbcType=VARCHAR},
+      saphh = #{record.saphh,jdbcType=VARCHAR},
+      sapph = #{record.sapph,jdbcType=VARCHAR},
+      sapwlm = #{record.sapwlm,jdbcType=VARCHAR},
+      qty = #{record.qty,jdbcType=NUMERIC},
+      maiTouNo = #{record.maitouno,jdbcType=VARCHAR},
+      luoHao = #{record.luohao,jdbcType=VARCHAR},
+      gangHao = #{record.ganghao,jdbcType=VARCHAR},
+      realWidth = #{record.realwidth,jdbcType=VARCHAR},
+      realLength = #{record.reallength,jdbcType=VARCHAR},
+      chengFenDaiMa = #{record.chengfendaima,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ipace.linzhan.xiufu.xiuFu.Sapso">
+    update sapso
+    <set>
+      <if test="timesamebatch != null">
+        timeSameBatch = #{timesamebatch,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="osno != null">
+        osNo = #{osno,jdbcType=VARCHAR},
+      </if>
+      <if test="ebno != null">
+        ebNo = #{ebno,jdbcType=VARCHAR},
+      </if>
+      <if test="caigouno != null">
+        caiGouNo = #{caigouno,jdbcType=VARCHAR},
+      </if>
+      <if test="prdno != null">
+        prdNo = #{prdno,jdbcType=VARCHAR},
+      </if>
+      <if test="saphh != null">
+        saphh = #{saphh,jdbcType=VARCHAR},
+      </if>
+      <if test="sapph != null">
+        sapph = #{sapph,jdbcType=VARCHAR},
+      </if>
+      <if test="sapwlm != null">
+        sapwlm = #{sapwlm,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        qty = #{qty,jdbcType=NUMERIC},
+      </if>
+      <if test="maitouno != null">
+        maiTouNo = #{maitouno,jdbcType=VARCHAR},
+      </if>
+      <if test="luohao != null">
+        luoHao = #{luohao,jdbcType=VARCHAR},
+      </if>
+      <if test="ganghao != null">
+        gangHao = #{ganghao,jdbcType=VARCHAR},
+      </if>
+      <if test="realwidth != null">
+        realWidth = #{realwidth,jdbcType=VARCHAR},
+      </if>
+      <if test="reallength != null">
+        realLength = #{reallength,jdbcType=VARCHAR},
+      </if>
+      <if test="chengfendaima != null">
+        chengFenDaiMa = #{chengfendaima,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ipace.linzhan.xiufu.xiuFu.Sapso">
+    update sapso
+    set timeSameBatch = #{timesamebatch,jdbcType=VARCHAR},
+      uuid = #{uuid,jdbcType=VARCHAR},
+      osNo = #{osno,jdbcType=VARCHAR},
+      ebNo = #{ebno,jdbcType=VARCHAR},
+      caiGouNo = #{caigouno,jdbcType=VARCHAR},
+      prdNo = #{prdno,jdbcType=VARCHAR},
+      saphh = #{saphh,jdbcType=VARCHAR},
+      sapph = #{sapph,jdbcType=VARCHAR},
+      sapwlm = #{sapwlm,jdbcType=VARCHAR},
+      qty = #{qty,jdbcType=NUMERIC},
+      maiTouNo = #{maitouno,jdbcType=VARCHAR},
+      luoHao = #{luohao,jdbcType=VARCHAR},
+      gangHao = #{ganghao,jdbcType=VARCHAR},
+      realWidth = #{realwidth,jdbcType=VARCHAR},
+      realLength = #{reallength,jdbcType=VARCHAR},
+      chengFenDaiMa = #{chengfendaima,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
