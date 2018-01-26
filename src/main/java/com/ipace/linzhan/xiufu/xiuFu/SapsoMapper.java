@@ -36,4 +36,59 @@ public interface SapsoMapper {
     Integer updateOsNoAndPrdNoAndChengFenDaiMaNullToSpace();
 @Select("select osno from sapso group by osno")
     List<String> deDaoSuoYouDanHao();
+
+
+    @Select({"select id,timesamebatch,uuid,osno,ebno,caigouno\n" +
+            "prdno,saphh,sapph,sapwlm,maitouno,luohao,ganghao,\n" +
+            "realwidth,reallength,chengfendaima\n" +
+            "from sapso\n" +
+            "where \n" +
+            "isnull(prdno,'')=#{prdno}\n" +
+            "and\n" +
+            " isnull(osno,'')=#{osno}\n" +
+            "and\n" +
+            "isnull(chengfendaima,'')=#{chengfendaima}\n" +
+            "and \n" +
+            "isnull(saphh,'')=#{saphh}\n" +
+            "and\n" +
+            "isnull(sapwlm,'')=#{sapwlm}\n" +
+            "and\n" +
+            "isnull(maitouno,'')=#{maitouno}\n" +
+            "and\n" +
+            "isnull(sapph,'')=#{sapph}\n" +
+            "and\n" +
+            "isnull(ebno,'')=#{ebno}\n" +
+            "and\n" +
+            "isnull(caigouno,'')=#{caigouno}"})
+    List<Sapso> selectSapso(@Param("prdno") String prdno,@Param("osno") String osno,
+                            @Param("chengfendaima")String chengfendaima,
+                            @Param("saphh") String saphh,@Param("sapwlm") String sapwlm,
+                            @Param("maitouno") String maitouno,
+                            @Param("sapph") String sapph,@Param("ebno") String ebno,
+                            @Param("caigouno")String caigouno);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
